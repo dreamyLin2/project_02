@@ -11,7 +11,7 @@ $(function() {
         $('.reg-box').hide()
     })
 
-    // 从layui中获取对象
+    // 从layui中获取对象 文件
     var form = layui.form
     var layer = layui.layer
     form.verify({
