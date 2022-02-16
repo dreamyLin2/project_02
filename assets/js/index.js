@@ -1,22 +1,23 @@
 // 入口函数
 $(function() {
-        // 调用getUserInfo()获取用户信息
-        getUserInfo()
-            // 点击按钮，实现退出功能
-        var layer = layui.layer
-        $('#btnLogout').on('click', function() {
-            // 提示用户是否退出
-            layer.confirm('确定退出？', { icon: 3, title: '提示' }, function(index) {
-                // 1.清空本地存储的token
-                localStorage.removeItem('token')
-                    // 2.重新跳转到登录页
-                location.href = '/login.html'
-                    //关闭confirm确认框
-                layer.close(index);
-            });
-        })
+    // 调用getUserInfo()获取用户信息
+    getUserInfo()
+        // 点击按钮，实现退出功能
+    var layer = layui.layer
+    $('#btnLogout').on('click', function() {
+        // 提示用户是否退出
+        layer.confirm('确定退出？', { icon: 3, title: '提示' }, function(index) {
+            // 1.清空本地存储的token
+            localStorage.removeItem('token')
+                // 2.重新跳转到登录页
+            location.href = '/login.html'
+                //关闭confirm确认框
+            layer.close(index);
+        });
     })
-    // bug:$.ajax里面必须的headers等属性，必须用小写开头
+})
+
+// bug:$.ajax里面必须的headers等属性，必须用小写开头
 function getUserInfo() {
     $.ajax({
         method: 'GET',
@@ -49,7 +50,7 @@ function getUserInfo() {
 //用user接收
 function renderAvatar(user) {
     // 1.获取用户的名称
-    var name = user.username || user.nickname
+    var name = user.nickname || user.username
         // 2.设置欢迎的文本
     $('#welcome').html('欢迎&nbsp;&nbsp;' + name)
         // 3.按需渲染用户的头像
